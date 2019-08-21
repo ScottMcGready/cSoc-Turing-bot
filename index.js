@@ -1,8 +1,13 @@
 require('dotenv').config();
+
 const Discord = require('discord.js');
 const { prefix } = require('./config.json');
-
 const client = new Discord.Client();
+
+function addSubtractPoints(userID, points, requestedBy){
+	return userID+points+requestedBy;
+}
+
 
 client.once('ready', () => {
 	console.log('Ready!');
@@ -20,7 +25,6 @@ client.on('message', message => {
 		case 'create':
 			// Check arguments to make sure they're legit
 			// Post to #challenge-time if all good
-			// 
 		break;
 
 		// Commands list
@@ -41,7 +45,7 @@ client.on('message', message => {
 				// .addField('!turing-test', 'test')
 				.addField('!turing-verify <flag>', 'Verifies a flag. This should only be done by DMing the Turing bot directly. Has a cooldown (so no bruteforcing!)...')
 
-			// send to channel	
+			// send to channel
 			message.channel.send(helpEmbed);
 		break;
 
@@ -59,7 +63,7 @@ client.on('message', message => {
 				.setThumbnail('https://cdn.discordapp.com/attachments/609726389213593608/612439329595195432/test.png')
 				.addField(':trophy: Top 10 :trophy:', lbtop10)
 				.addField('Other players', lbothers)
-			// send to channel	
+			// send to channel
 			message.channel.send(leaderboardEmbed);
 		break;
 
@@ -92,7 +96,6 @@ client.on('message', message => {
 			const challengeTimeChannel = client.channels.get(process.env.CHANNEL_CHALLENGE_ID);
 			challengeTimeChannel.send('message to bot-testing only');
 		break;
-
 	}
 
 });
