@@ -1,7 +1,7 @@
 module.exports = {
-	name: 'help',
+	name: 'create',
 	description: 'example!',
-	aliases: ['commands'],
+	aliases: ['new'],
 	usage: 'how to use this command...',
 	execute(message, args) {
 		message.channel.send('text');
