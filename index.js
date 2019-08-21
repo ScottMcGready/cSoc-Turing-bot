@@ -24,9 +24,25 @@ client.on('message', message => {
 		break;
 
 		// Commands list
+		case 'commands':
 		case 'help':
 			// Print a list of all commands
-			message.channel.send('asdasd');
+			const helpEmbed = new Discord.RichEmbed()
+				.setColor('#0099ff')
+				.setAuthor('Turing Bot Command List')
+				.setDescription('List of leaderboard things')
+				.setThumbnail('https://cdn.discordapp.com/attachments/609726389213593608/612439329595195432/test.png')
+				.addField('!turing-create <name> <points> <URL>', 'Creates a new challenge. You *must* include the three paramters for it to work')
+				.addField('!turing-commands _or_ !turing-help', 'Print this help menu. How very inception.')
+				.addField('!turing-leaderboard', 'Shows the current leaderboard')
+				.addField('!turing-retire <name>', 'Retires a challenge. Can only be done by Admins & the challenge creator')
+				.addField('!turing-rules', 'Information on point scoring')
+				.addField('!turing-stats <username> _or_ !turing-profile <username>', 'Shows stats on a player if the <name> parameter is included. For example ``!turing-stats ThreadOverflow`` would show @ThreadOverflow\'s profile. ``!turing-stats`` without the paramter will show your own.')
+				// .addField('!turing-test', 'test')
+				.addField('!turing-verify <flag>', 'Verifies a flag. This should only be done by DMing the Turing bot directly. Has a cooldown (so no bruteforcing!)...')
+
+			// send to channel	
+			message.channel.send(helpEmbed);
 		break;
 
 		// Show a global leaderboard
